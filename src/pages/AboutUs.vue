@@ -1,10 +1,13 @@
 <template>
     <div class="relative">
+        <!-- Tombol Donate yang diperbarui -->
         <div
-            class="fixed top-4 right-4 z-50 border-2 border-black p-2 bg-white text-black rounded-lg shadow-lg hover:bg-gray-100 transition-colors duration-300 supporter-button"
+            class="donate-button bg-white "
             @click="openDonate"
         >
-            <div class="supporter-button-inner">Donate</div>
+            <div class="donate-button-inner p-2">
+                <span class="font-bold text-lg">Donate</span>
+            </div>
         </div>
 
         <HeaderSection />
@@ -29,32 +32,31 @@ import FooterSection from "../components/FooterSection.vue";
 import Hero from "../components/Hero.vue";
 
 function openDonate() {
-    window.open("https://www.patreon.com/isa_ua", "_blank");
+    window.open("https://isa-charity.webflow.io/donate", "_blank");
 }
 </script>
 
 <style scoped>
-.supporter-button {
-    position: relative;
-    display: inline-block;
+.donate-button {
+    position: fixed;
+    right: 1.2rem;
+    top: 1.2rem;
     cursor: pointer;
-    overflow: visible;
+    z-index: 50;
 }
 
-.supporter-button-inner {
-    background-color: white;
+.donate-button-inner {
     color: black;
     border: 2px solid black;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: all 0.3s ease;
     will-change: transform;
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    text-align: center;
+    font-family: sans-serif;
 }
 
-.supporter-button:hover .supporter-button-inner {
+.donate-button:hover .donate-button-inner {
     transform: translate(0.5em, -0.5em);
-    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1);
-    background-color: #f5f5f5;
 }
+
 </style>
