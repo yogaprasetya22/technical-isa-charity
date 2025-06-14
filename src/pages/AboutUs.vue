@@ -32,7 +32,7 @@ import FooterSection from "../components/FooterSection.vue";
 import Hero from "../components/Hero.vue";
 
 function openDonate() {
-    window.open("https://isa-charity.webflow.io/donate", "_blank");
+    window.open("#", "_blank");
 }
 </script>
 
