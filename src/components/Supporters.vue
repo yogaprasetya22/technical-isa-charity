@@ -16,7 +16,7 @@
                     class="supporter-card"
                     ref="supporterRefs"
                 >
-                    <div class="supporter-card-inner ">
+                    <div class="supporter-card-inner">
                         <img
                             :src="supporter.logo"
                             :alt="supporter.team_name"

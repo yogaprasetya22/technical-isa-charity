@@ -18,7 +18,7 @@
                 ref="teamRefs"
             >
                 <div
-                    class="team-card-inner bg-[#fcf944] overflow-hidden text-center border border-black"
+                    class="team-card-inner bg-[#fcf944] overflow-hidden text-center border-2 border-black"
                 >
                     <div v-if="member.image" class="w-full aspect-square p-5">
                         <img
@@ -38,9 +38,9 @@
                         />
                     </div>
 
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg">{{ member.name }}</h3>
-                        <p class="text-sm text-gray-700">{{ member.role }}</p>
+                    <div class="p-4 space-y-1">
+                        <h3 class="font-semibold text-sm md:text-lg">{{ member.name }}</h3>
+                        <p class="text-sm md:text-sm text-gray-700">{{ member.role }}</p>
                     </div>
                 </div>
             </div>

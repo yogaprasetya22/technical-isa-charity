@@ -112,7 +112,7 @@ const setupAnimations = () => {
             onEnterBack: () => animateRowIn(row, rowIndex * 0.05),
             onLeave: () => animateRowOut(row),
             onLeaveBack: () => animateRowOut(row),
-            markers: true,
+            // markers: true,
         });
     });
 };
