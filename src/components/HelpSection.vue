@@ -1,18 +1,16 @@
 <template>
-    <section
-        ref="sectionRef"
-        class="bg-[#fcf944] text-black py-24 px-4 overflow-hidden"
-    >
+    <div class="bg-[#fcf944] text-black py-24 px-4 overflow-hidden">
         <div class="max-w-6xl mx-auto text-center mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold  mb-4">We want to help</h2>
-            <p class="text-4xl md:text-4xl ">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">We want to help</h2>
+            <p class="text-4xl md:text-4xl">
                 homeless packs, volunteers, guardians, overstayers, shelters and
                 other organisations
             </p>
         </div>
 
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto"
+            ref="sectionRef"
+            class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto"
         >
             <div
                 class="supporter-card bg-white"
@@ -27,7 +25,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -92,7 +90,10 @@ const animateRowOut = (row: HTMLElement[]) => {
 
 const setupAnimations = () => {
     const items = supporterRefs.value;
-    const rowSize = 3; // jumlah kolom per baris
+    const rowSize =
+        window.innerWidth < 768
+            ? 2 // mobile: 2 kolom per baris
+            : 3; // desktop: 3 kolom per baris
     const rows: HTMLElement[][] = [];
 
     // Kelompokkan ke dalam baris
@@ -111,7 +112,7 @@ const setupAnimations = () => {
             onEnterBack: () => animateRowIn(row, rowIndex * 0.05),
             onLeave: () => animateRowOut(row),
             onLeaveBack: () => animateRowOut(row),
-            // markers: true
+            markers: true,
         });
     });
 };
@@ -128,19 +129,18 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .supporter-card {
-  overflow: visible; /* penting agar border bisa “keluar” */
-  position: relative;
+    overflow: visible; /* penting agar border bisa “keluar” */
+    position: relative;
 }
 
 .supporter-card-inner {
-  transition: transform 0.3s ease;
-  will-change: transform;
+    transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .supporter-card:hover .supporter-card-inner {
-  transform: translate(.5em,-.5em);
-  z-index: 1;
-  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translate(0.5em, -0.5em);
+    z-index: 1;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1);
 }
-
 </style>

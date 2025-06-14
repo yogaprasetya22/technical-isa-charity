@@ -7,10 +7,10 @@
             class="flex flex-col items-center justify-center text-center px-4 w-full"
         >
             <div
-                class="flex flex-row gap-10 w-full justify-center items-center"
+                class="flex flex-row gap-5 md:gap-10 w-full justify-center items-center"
             >
                 <!-- Animated Logo -->
-                <div class="relative w-56 h-56 mb-6">
+                <div class="relative w-20 h-20 md:w-56 md:h-56 mb-6">
                     <img
                         ref="logoInRef"
                         :src="currentLogo"
@@ -37,7 +37,7 @@
             </div>
 
             <!-- Subheading -->
-            <p class="subtitle text-lg mt-4 tracking-wide uppercase">
+            <p class="subtitle text-sm md:text-lg mt-4 tracking-wide lowercase">
                 charity organization
             </p>
 

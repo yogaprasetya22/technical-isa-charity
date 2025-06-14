@@ -1,13 +1,13 @@
 <template>
     <div class="p-[10%] mx-auto w-full bg-white">
-        <h2 class="text-xl font-bold mb-4 text-[4vw]">We are</h2>
-        <p class="mb-[1em] mt-[.5em] text-[2.5vw]">
+        <h2 class="text-xl font-bold mb-4 text-[8vw] md:text-[4vw]">We are</h2>
+        <p class="mb-[1em] mt-[.5em] text-[3.75vw] md:text-[2.5vw]">
             team of like-minded people, socially active companies, media
             personalities, volunteers who help low-income shelters and foster
             carers to support homeless animals.
         </p>
-        <h3 class="text-xl font-bold mb-4 text-[4vw]">Our primary goal</h3>
-        <p class="mb-[1em] mt-[.5em] text-[2.5vw]">
+        <h3 class="text-xl font-bold mb-4 text-[8vw] md:text-[4vw]">Our primary goal</h3>
+        <p class="mb-[1em] mt-[.5em] text-[3.75vw] md:text-[2.5vw]">
             is to provide animals with the most necessary things - food,
             medicine, and urgent needs for the livelihood of shelters. We
             believe in our power and the power of conscious citizens who care
@@ -19,7 +19,7 @@
             loving eyes.
         </p>
         <blockquote
-            class="text-black text-left font-dm-sans text-[2.5vw] leading-[1.5em] block border-l-4 border-[#ff97d0] mt-0 mb-0 ml-16 p-4 italic font-normal"
+            class="text-black text-left font-dm-sans text-[3.75vw] md:text-[2.5vw] leading-[1.5em] block border-l-4 border-[#ff97d0] mt-0 mb-0  ml-4 md:ml-16 p-4 italic font-normal"
         >
             "Animals need to have friends. Just like humans."
             <br />
@@ -27,7 +27,7 @@
                 >- James Herriot, All Creatures Great and Small</span
             >
         </blockquote>
-        <p class="mb-[1em] mt-[.5em] text-[2.5vw]">
+        <p class="mb-[1em] mt-[.5em] text-[3.75vw] md:text-[2.5vw]">
             Who else if not we should support our younger brothers, especially
             in difficult times? Let's be friends!
         </p>

@@ -1,49 +1,49 @@
 <template>
-    <section class="py-16 px-[10%] w-full bg-[#31be32] text-black">
-        <div class="w-full flex flex-row items-center justify-center">
-            <!-- Contact Information -->
-            <div class="text-start w-full">
-                <h2 class="text-4xl md:text-6xl font-extrabold mb-6">
+    <section class="py-12 px-5 w-full bg-[#31be32] text-white md:py-16 md:px-[10%]">
+        <div class="w-full flex flex-col items-center md:flex-row md:justify-center md:items-start">
+            <!-- Contact Information - Mobile first -->
+            <div class="text-center w-full md:text-start md:flex-1">
+                <h2 class="text-3xl font-extrabold mb-4 md:text-4xl md:mb-6 lg:text-6xl">
                     Contact us
                 </h2>
-                <div class="space-y-3 text-xl md:text-3xl">
+                <div class="space-y-2 text-lg md:text-xl lg:text-3xl">
                     <p>Kyiv, Ukraine</p>
                     <p>
                         <a
                             href="mailto:mail@isa.co.ua"
-                            class="hover:underline transition-all duration-200"
+                            class="hover:underline transition-all duration-200 text-white"
                         >
                             mail@isa.co.ua
                         </a>
                     </p>
                 </div>
                 <div
-                    class="flex items-center justify-start gap-5 text-2xl mt-6"
+                    class="flex items-center justify-center gap-4 text-xl mt-6 md:justify-start md:gap-5 md:text-2xl"
                 >
-                    <a href="#" aria-label="YouTube"
-                        ><font-awesome-icon :icon="['fab', 'youtube']"
-                    /></a>
-                    <a href="#" aria-label="Instagram"
-                        ><font-awesome-icon :icon="['fab', 'instagram']"
-                    /></a>
-                    <a href="#" aria-label="Facebook"
-                        ><font-awesome-icon :icon="['fab', 'facebook']"
-                    /></a>
-                    <a href="#" aria-label="Patreon"
-                        ><font-awesome-icon :icon="['fab', 'patreon']"
-                    /></a>
-                    <a href="#" aria-label="Telegram"
-                        ><font-awesome-icon :icon="['fab', 'telegram']"
-                    /></a>
+                    <a href="#" aria-label="YouTube" class="hover:text-white/80">
+                        <font-awesome-icon :icon="['fab', 'youtube']" />
+                    </a>
+                    <a href="#" aria-label="Instagram" class="hover:text-white/80">
+                        <font-awesome-icon :icon="['fab', 'instagram']" />
+                    </a>
+                    <a href="#" aria-label="Facebook" class="hover:text-white/80">
+                        <font-awesome-icon :icon="['fab', 'facebook']" />
+                    </a>
+                    <a href="#" aria-label="Patreon" class="hover:text-white/80">
+                        <font-awesome-icon :icon="['fab', 'patreon']" />
+                    </a>
+                    <a href="#" aria-label="Telegram" class="hover:text-white/80">
+                        <font-awesome-icon :icon="['fab', 'telegram']" />
+                    </a>
                 </div>
             </div>
 
-            <!-- Logo -->
-            <div ref="logoRef" class="mt-12">
+            <!-- Logo - Hidden on mobile, visible on desktop -->
+            <div ref="logoRef" >
                 <img
                     src="@/assets/images/62647f9fbe07235ba9b28d67_star-white-with-animals.svg"
                     alt="ISA Logo"
-                    class="w-5xl opacity-0"
+                    class="w-full h-auto "
                 />
             </div>
         </div>
@@ -63,8 +63,8 @@ gsap.registerPlugin(ScrollTrigger);
 const logoRef = ref<HTMLElement | null>(null);
 
 const setupAnimations = () => {
-    // Logo animation
-    if (logoRef.value) {
+    // Only animate logo on desktop
+    if (window.innerWidth >= 768 && logoRef.value) {
         gsap.to(logoRef.value.querySelector("img"), {
             opacity: 1,
             y: 0,
@@ -82,10 +82,14 @@ const setupAnimations = () => {
 onMounted(async () => {
     await nextTick();
     setupAnimations();
+    
+    // Handle window resize
+    window.addEventListener('resize', setupAnimations);
 });
 
 onBeforeUnmount(() => {
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    window.removeEventListener('resize', setupAnimations);
 });
 </script>
 
@@ -100,18 +104,42 @@ h2 {
     line-height: 1.2;
 }
 
-a {
+a[href^="mailto:"] {
     display: inline-block;
     transition: transform 0.2s ease, text-decoration 0.2s ease;
 }
 
-a:hover {
+a[href^="mailto:"]:hover {
     text-decoration: underline;
     transform: translateY(-1px);
+}
+
+/* Social icons hover effect */
+a:not([href^="mailto:"]) {
+    transition: opacity 0.2s ease;
+}
+
+a:not([href^="mailto:"]):hover {
+    opacity: 0.8;
 }
 
 /* Logo animation base state */
 img {
     transform: translateY(20px);
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+    .flex-col {
+        align-items: center;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    
+    .justify-center {
+        justify-content: center;
+    }
 }
 </style>

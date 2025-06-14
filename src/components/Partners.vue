@@ -13,7 +13,7 @@
 
             <!-- Partners Grid -->
             <div
-                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+                class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
             >
                 <div
                     v-for="(partner, index) in partners"
@@ -118,7 +118,10 @@ const animateRowOut = (row: HTMLElement[]) => {
 const setupAnimations = () => {
     // Partners animation
     const items = partnerRefs.value;
-    const rowSize = 4; // Match lg:grid-cols-4
+    const rowSize =
+        window.innerWidth < 768
+            ? 2 // mobile: 2 kolom per baris
+            : 4; // desktop: 3 kolom per baris
     const rows: HTMLElement[][] = [];
 
     // Group into rows

@@ -1,7 +1,7 @@
 <template>
     <section ref="sectionRef" class="p-[10%] w-full bg-white text-black">
         <div class="max-w-7xl mx-auto text-start mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold  mb-4">Our team</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Our team</h2>
             <p class="text-4xl md:text-4xl">
                 consists of completely different people who are united by a
                 common desire – to help
@@ -9,7 +9,7 @@
         </div>
 
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-4 max-w-7xl mx-auto"
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-4 max-w-7xl mx-auto"
         >
             <div
                 v-for="(member, index) in team"
@@ -17,7 +17,9 @@
                 class="team-card"
                 ref="teamRefs"
             >
-                <div class="team-card-inner bg-[#fcf944] overflow-hidden text-center border border-black ">
+                <div
+                    class="team-card-inner bg-[#fcf944] overflow-hidden text-center border border-black"
+                >
                     <div v-if="member.image" class="w-full aspect-square p-5">
                         <img
                             :src="member.image"
@@ -185,7 +187,10 @@ const animateRowOut = (row: HTMLElement[]) => {
 
 const setupAnimations = () => {
     const items = teamRefs.value;
-    const rowSize = 4; // jumlah kolom per baris (sesuaikan dengan grid lg:grid-cols-4)
+    const rowSize =
+        window.innerWidth < 768
+            ? 2 // mobile: 2 kolom per baris
+            : 4; // desktop: 3 kolom per baris
     const rows: HTMLElement[][] = [];
 
     // Kelompokkan ke dalam baris

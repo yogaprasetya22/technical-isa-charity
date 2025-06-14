@@ -191,7 +191,10 @@ const animateRowOut = (row: HTMLElement[]) => {
 
 const setupAnimations = () => {
     const items = supporterRefs.value;
-    const rowSize = 4; // jumlah kolom per baris (sesuai dengan lg:grid-cols-4)
+    const rowSize =
+        window.innerWidth < 768
+            ? 2 // mobile: 2 kolom per baris
+            : 4; // desktop: 3 kolom per baris
     const rows: HTMLElement[][] = [];
 
     // Kelompokkan ke dalam baris
